@@ -6,20 +6,20 @@ import { Octokit } from "@octokit/core";
 export default function HomePage() {
   const [username, setUsername] = useState("");
   const [repos, setRepos] = useState([]);
+  s;
+
+  const octokit = new Octokit({
+    auth: import.meta.env.GITHUB_TOKEN,
+  });
 
   const fetchRepos = async () => {
     try {
-      const octokit = new Octokit({
-        auth: "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",
-      });
-
       const response = await octokit.request("GET /users/{username}/repos", {
         username,
         headers: {
           "X-GitHub-Api-Version": "2022-11-28",
         },
       });
-
       console.log(response.data);
       setRepos(response.data);
     } catch (error) {
