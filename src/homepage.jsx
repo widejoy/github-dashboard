@@ -1,15 +1,15 @@
 import { useState } from "react";
-import { Button, Input, Center, VStack } from "@chakra-ui/react";
+import { Button, Input, Center, VStack, Text } from "@chakra-ui/react";
 import { Field } from "./components/ui/field";
 import { Octokit } from "@octokit/core";
+import RepoList from "./components/app/repotile";
 
 export default function HomePage() {
   const [username, setUsername] = useState("");
   const [repos, setRepos] = useState([]);
-  s;
 
   const octokit = new Octokit({
-    auth: import.meta.env.GITHUB_TOKEN,
+    auth: import.meta.env.VITE_GITHUB_TOKEN,
   });
 
   const fetchRepos = async () => {
@@ -42,10 +42,12 @@ export default function HomePage() {
         </Button>
       </Center>
       {repos.length > 0 && (
-        <VStack spacing={2} mt={4}>
-          <strong>Repositories:</strong>
+        <VStack spacing={4} mt={4} w="100%">
+          <Text fontWeight="bold" fontSize="lg">
+            Repositories:
+          </Text>
           {repos.map((repo) => (
-            <div key={repo.id}>{repo.name}</div>
+            <RepoList key={repo.id} repo={repo} />
           ))}
         </VStack>
       )}
