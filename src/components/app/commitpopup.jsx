@@ -44,7 +44,7 @@ const CommitPopup = ({ isOpen, onClose, commits }) => {
       }
     });
 
-    return weeks.reverse();
+    return weeks;
   };
 
   const weeklyCommitData = processCommitData();
@@ -58,7 +58,7 @@ const CommitPopup = ({ isOpen, onClose, commits }) => {
   const chartData = {
     labels: Array.from(
       { length: 10 },
-      (_, i) => `Week ${10 - i + currentPage * 10}`
+      (_, i) => `Week ${currentPage * 10 + i + 1}`
     ),
     datasets: [
       {
