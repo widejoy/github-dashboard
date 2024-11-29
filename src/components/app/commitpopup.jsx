@@ -122,10 +122,10 @@ const CommitPopup = ({ isOpen, onClose, commits }) => {
             >
               Forward
             </Button>
+            <Button colorScheme="blue" onClick={onClose}>
+              Close
+            </Button>
           </HStack>
-          <Button colorScheme="blue" ml={4} onClick={onClose}>
-            Close
-          </Button>
         </ModalFooter>
       </ModalContent>
     </Modal>
