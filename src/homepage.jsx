@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Button, Input, Center, VStack, Text } from "@chakra-ui/react";
 import { Field } from "./components/ui/field";
 import { Octokit } from "@octokit/core";
 import RepoList from "./components/app/repotile";
+import { setUsername } from "./redux/slices/githubSlice";
+import { useState } from "react";
 
 export default function HomePage() {
-  const [username, setUsername] = useState("");
+  const username = useSelector((state) => state.github.username);
+  const dispatch = useDispatch();
+
   const [repos, setRepos] = useState([]);
 
   const octokit = new Octokit({
@@ -33,7 +37,7 @@ export default function HomePage() {
         <Input
           placeholder="Enter GitHub username"
           value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={(e) => dispatch(setUsername(e.target.value))}
         />
       </Field>
       <Center>
