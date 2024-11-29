@@ -8,7 +8,7 @@ import CommitPopup from "./CommitPopup";
 export default function RepoList({ repo }) {
   const dispatch = useDispatch();
   const username = useSelector((state) => state.github.username);
-  const [isOpen, setIsOpen] = useState(false); // Replace useDisclosure with useState
+  const [isOpen, setIsOpen] = useState(false);
   const [commits, setCommits] = useState([]);
   const octokit = new Octokit({
     auth: import.meta.env.VITE_GITHUB_TOKEN,
@@ -35,11 +35,11 @@ export default function RepoList({ repo }) {
   const handleCardClick = async () => {
     dispatch(setRepository(repo));
     await fetchDetails();
-    setIsOpen(true); // Open the modal
+    setIsOpen(true);
   };
 
   const handleClose = () => {
-    setIsOpen(false); // Close the modal
+    setIsOpen(false);
   };
 
   return (
