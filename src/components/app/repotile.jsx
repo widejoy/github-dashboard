@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Octokit } from "@octokit/core";
 import { useState } from "react";
 import { setRepository } from "../../redux/slices/githubSlice";
-import CommitPopup from "./CommitPopup";
+import CommitPopup from "./commitpopup";
 
 export default function RepoList({ repo }) {
   const dispatch = useDispatch();
