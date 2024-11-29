@@ -28,10 +28,10 @@ ChartJS.register(
 );
 
 const CommitPopup = ({ isOpen, onClose, commits }) => {
-  const [currentPage, setCurrentPage] = useState(0); // Tracks the current 10-week range
+  const [currentPage, setCurrentPage] = useState(0);
 
   const processCommitData = () => {
-    const weeks = Array(100).fill(0); // Enough for 100 weeks
+    const weeks = Array(100).fill(0);
     const now = new Date();
 
     commits.forEach((commit) => {
@@ -44,12 +44,11 @@ const CommitPopup = ({ isOpen, onClose, commits }) => {
       }
     });
 
-    return weeks.reverse(); // Reverse to display latest weeks first
+    return weeks.reverse();
   };
 
   const weeklyCommitData = processCommitData();
 
-  // Determine the data for the current page
   const getPageData = () => {
     const start = currentPage * 10;
     const end = start + 10;
